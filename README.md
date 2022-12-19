@@ -1,13 +1,33 @@
-# Cassandra Monitoring with InfluxDB via Graphite protocol and Grafana on Docker Compose
-
-For more details see the [blogpost](https://softwaremill.com/cassandra-monitoring-part-2/).
-
 ## Running
+
+Build containers
+```
+docker-compose build
+```
+
 
 Start up all docker containers using:
 ```
-docker-compose up
+docker-compose up -d
 ```
+
+It was a write side
+
+Inconsistency case !!!!!!!!!!
+
+Dont worry
+
+
+
+Now MONITORING to cassandra
+
+
+http://localhost:3000/
+
+login: admin
+passw: admin
+
+
 
 Add InfluxDB datasource to Grafana:
 ```
@@ -16,6 +36,14 @@ curl 'http://admin:admin@127.0.0.1:3000/api/datasources' -X POST \
 --data-binary '{"name":"influx","type":"influxdb","url":"http://influxdb:8086",
 "access":"proxy","isDefault":true,"database":"graphite","user":"admin","password":"admin"}'
 ```
+
+
+Show the metrics
+1) memtables heap size
+2) https://docs.datastax.com/en/dseplanning/docs/metricsandalerts.html
+3) [blogpost](https://softwaremill.com/cassandra-monitoring-part-2/).
+
+
 
 ## Details
 
